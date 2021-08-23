@@ -1,24 +1,31 @@
 <?php
-namespace AHT\CustomChekout\Plugin\Checkout;
+namespace AHT\CustomChekout\Plugin\Checkout\Model\Checkout;
 
-use Magento\Checkout\Block\Checkout\LayoutProcessor;
-
-class LayoutProcessorPlugin
+class LayoutProcessor
  {
-    public function afterProcess(LayoutProcessor $subject, array $jsLayout)
+     /**
+     * @param \Magento\Checkout\Block\Checkout\LayoutProcessor $subject
+     * @param array $jsLayout
+     * @return array
+     */
+    public function afterProcess(\Magento\Checkout\Block\Checkout\LayoutProcessor $subject, array $jsLayout)
     { $jsLayout['components']['checkout']['children']['steps']['children']['delivery-step']['children']
         ['field-group-delivery']['children']['delivery-date'] = [
             'component' => 'Magento_Ui/js/form/element/date',
-             'config' => [ 'customScope' => 'deliveryStepFields',
-             'template' => 'ui/form/field',
-             'elementTmpl' => 'ui/form/element/date',
-             'id' => 'delivery_date_field' ],
-             'dataScope' => 'deliveryStepFields.delivery_date',
-             'label' => 'Delivery date',
-             'options' => [
+            'config' => [
+                'customScope' => 'deliveryStepFields',
+                'template' => 'ui/form/field',
+                'elementTmpl' => 'ui/form/element/date',
+                'id' => 'delivery_date_field'
+            ],
+            'dataScope' => 'deliveryStepFields.delivery_date',
+            'label' => __('Delivery date'),
+            'required' => true,
+            'options' => [
                  'dateFormat' => 'y/MM/dd',
                  'showsTime' => false
-                ],
+             ],
+            'validation' => ['required-entry' => true],
             'provider' => 'checkoutProvider',
             'visible' => true,
             'sortOrder' => 1,
@@ -37,7 +44,7 @@ class LayoutProcessorPlugin
                 'rows' => 5
                 ],
             'dataScope' => 'deliveryStepFields.delivery_comment',
-            'label' => 'Delivery comment',
+            'label' => __('Delivery comment'),
             'provider' => 'checkoutProvider',
             'visible' => true,
             'sortOrder' => 2,
@@ -46,4 +53,5 @@ class LayoutProcessorPlugin
 
         return $jsLayout;
     }
+
  }
