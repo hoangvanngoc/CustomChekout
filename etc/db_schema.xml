@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="quote" >
+		<column xsi:type="date" name="delivery_date" nullable="true"  comment="Delivery Comment"/>
+        <column xsi:type="varchar" name="delivery_comment" nullable="true" length="255" default=""   comment="Delivery Comment"/>
+	</table>
+    <table name="sales_order" >
+		<column xsi:type="date" name="delivery_date" nullable="true"  comment="Delivery Comment"/>
+        <column xsi:type="varchar" name="delivery_comment" nullable="true" length="255" default=""   comment="Delivery Comment"/>
+	</table>
+    <table name="sales_order_grid" >
+		<column xsi:type="date" name="delivery_date" nullable="true"  comment="Delivery Comment"/>
+        <column xsi:type="varchar" name="delivery_comment" nullable="true" length="255" default=""   comment="Delivery Comment"/>
+	</table>
+</schema>
