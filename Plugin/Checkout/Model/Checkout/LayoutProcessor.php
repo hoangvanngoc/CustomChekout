@@ -20,7 +20,6 @@ class LayoutProcessor
             ],
             'dataScope' => 'deliveryStepFields.delivery_date',
             'label' => __('Delivery date'),
-            'required' => true,
             'options' => [
                  'dateFormat' => 'y/MM/dd',
                  'showsTime' => false
